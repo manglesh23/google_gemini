@@ -5,17 +5,12 @@ const chatMemorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  history: {
-    role: {
-      type: String,
-      enum: ["user", "model"],
-      required: true,
+  history: [
+    {
+      role: { type: String, enum: ["user", "model"], required: true },
+      text: { type: String, required: true },
     },
-  },
-  text: {
-    type: String,
-    required: true,
-  },
+  ],
 });
 
-export default ChatMemory = mongoose.model("ChatMemory", chatMemorySchema);
+export const ChatMemory = mongoose.model("ChatMemory", chatMemorySchema);
